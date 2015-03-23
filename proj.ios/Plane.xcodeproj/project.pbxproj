@@ -831,6 +831,7 @@
 		AEDF9BD81ABFF2D600B14E95 /* img_bg_level_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_bg_level_5.jpg; sourceTree = "<group>"; };
 		AEDF9BD91ABFF2D600B14E95 /* img_cloud_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_cloud_1.png; sourceTree = "<group>"; };
 		AEDF9BDA1ABFF2D600B14E95 /* img_cloud_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_cloud_2.png; sourceTree = "<group>"; };
+		AEDF9BE31AC008F900B14E95 /* scorpion.psd */ = {isa = PBXFileReference; lastKnownFileType = file; path = scorpion.psd; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1980,6 +1981,7 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AEDF9BE31AC008F900B14E95 /* scorpion.psd */,
 				AEDF9BD31ABFF2D600B14E95 /* BG */,
 				AEDF9BB51ABFE16200B14E95 /* Sounds */,
 				AED193EC1ABFA39800C9CD86 /* Menu */,
