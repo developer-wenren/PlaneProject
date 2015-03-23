@@ -239,7 +239,6 @@
 		1AC3624B16D4A1E8000847F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC3624516D4A1E8000847F2 /* main.m */; };
 		1ACB3244164770DE00914215 /* libcurl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB3243164770DE00914215 /* libcurl.a */; };
 		1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */; };
-		1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */; };
 		1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8B916D35E4900DB1158 /* CloseNormal.png */; };
 		1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */; };
 		1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */ = {isa = PBXBuildFile; fileRef = 1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */; };
@@ -248,6 +247,22 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
+		AED193EB1ABFA00800C9CD86 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AED193E91ABFA00800C9CD86 /* MenuLayer.cpp */; };
+		AED193F01ABFA39800C9CD86 /* img_bg_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AED193ED1ABFA39800C9CD86 /* img_bg_logo.jpg */; };
+		AED193F11ABFA39800C9CD86 /* LOGO.png in Resources */ = {isa = PBXBuildFile; fileRef = AED193EE1ABFA39800C9CD86 /* LOGO.png */; };
+		AEDF9BA91ABFDD4600B14E95 /* scorpion.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BA81ABFDD4600B14E95 /* scorpion.png */; };
+		AEDF9BAC1ABFDE8000B14E95 /* MyFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BAA1ABFDE8000B14E95 /* MyFont.fnt */; };
+		AEDF9BAD1ABFDE8000B14E95 /* MyFont.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BAB1ABFDE8000B14E95 /* MyFont.png */; };
+		AEDF9BBB1ABFE16200B14E95 /* BGMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BB61ABFE16200B14E95 /* BGMusic.mp3 */; };
+		AEDF9BBC1ABFE16200B14E95 /* effect_boom.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BB71ABFE16200B14E95 /* effect_boom.mp3 */; };
+		AEDF9BBD1ABFE16200B14E95 /* effect_bullet.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BB81ABFE16200B14E95 /* effect_bullet.mp3 */; };
+		AEDF9BBE1ABFE16200B14E95 /* gameMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BB91ABFE16200B14E95 /* gameMusic.mp3 */; };
+		AEDF9BBF1ABFE16200B14E95 /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BBA1ABFE16200B14E95 /* menuMusic.mp3 */; };
+		AEDF9BC21ABFE65800B14E95 /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEDF9BC01ABFE65800B14E95 /* GameScene.cpp */; };
+		AEDF9BC91ABFE6B100B14E95 /* MapLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEDF9BC71ABFE6B100B14E95 /* MapLayer.cpp */; };
+		AEDF9BCD1ABFE6E500B14E95 /* GameLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AEDF9BCB1ABFE6E500B14E95 /* GameLayer.cpp */; };
+		AEDF9BCF1ABFED8600B14E95 /* bg.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BCE1ABFED8600B14E95 /* bg.mp3 */; };
+		AEDF9BD11ABFEFDF00B14E95 /* bg2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BD01ABFEFDF00B14E95 /* bg2.mp3 */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712461292920000B8313A /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB212928DE900B8313A /* libxml2.dylib */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
@@ -770,8 +785,6 @@
 		1ACB3243164770DE00914215 /* libcurl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcurl.a; path = ../../cocos2dx/platform/third_party/ios/libraries/libcurl.a; sourceTree = "<group>"; };
 		1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = ../Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		1AFAF8B416D35DE700DB1158 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
-		1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = ../Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
-		1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = ../Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		1AFAF8B916D35E4900DB1158 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
 		1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HelloWorld.png; sourceTree = "<group>"; };
@@ -783,6 +796,27 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		37C62C0718E156AE00D16FC4 /* ExtensionExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionExport.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
+		AED193E91ABFA00800C9CD86 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
+		AED193EA1ABFA00800C9CD86 /* MenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuLayer.h; sourceTree = "<group>"; };
+		AED193ED1ABFA39800C9CD86 /* img_bg_logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_bg_logo.jpg; sourceTree = "<group>"; };
+		AED193EE1ABFA39800C9CD86 /* LOGO.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOGO.png; sourceTree = "<group>"; };
+		AED193F51ABFB16400C9CD86 /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		AEDF9BA81ABFDD4600B14E95 /* scorpion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scorpion.png; sourceTree = "<group>"; };
+		AEDF9BAA1ABFDE8000B14E95 /* MyFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MyFont.fnt; sourceTree = "<group>"; };
+		AEDF9BAB1ABFDE8000B14E95 /* MyFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyFont.png; sourceTree = "<group>"; };
+		AEDF9BB61ABFE16200B14E95 /* BGMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGMusic.mp3; sourceTree = "<group>"; };
+		AEDF9BB71ABFE16200B14E95 /* effect_boom.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = effect_boom.mp3; sourceTree = "<group>"; };
+		AEDF9BB81ABFE16200B14E95 /* effect_bullet.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = effect_bullet.mp3; sourceTree = "<group>"; };
+		AEDF9BB91ABFE16200B14E95 /* gameMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gameMusic.mp3; sourceTree = "<group>"; };
+		AEDF9BBA1ABFE16200B14E95 /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
+		AEDF9BC01ABFE65800B14E95 /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
+		AEDF9BC11ABFE65800B14E95 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		AEDF9BC71ABFE6B100B14E95 /* MapLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MapLayer.cpp; sourceTree = "<group>"; };
+		AEDF9BC81ABFE6B100B14E95 /* MapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLayer.h; sourceTree = "<group>"; };
+		AEDF9BCB1ABFE6E500B14E95 /* GameLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLayer.cpp; sourceTree = "<group>"; };
+		AEDF9BCC1ABFE6E500B14E95 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
+		AEDF9BCE1ABFED8600B14E95 /* bg.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg.mp3; sourceTree = "<group>"; };
+		AEDF9BD01ABFEFDF00B14E95 /* bg2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg2.mp3; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB212928DE900B8313A /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -1316,10 +1350,11 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				AED193E41ABF9EFD00C9CD86 /* GameScene */,
+				AED193E51ABF9F0200C9CD86 /* MenuScene */,
+				AED193F51ABFB16400C9CD86 /* Define.h */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
-				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
-				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -1931,6 +1966,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AEDF9BB51ABFE16200B14E95 /* Sounds */,
+				AED193EC1ABFA39800C9CD86 /* Menu */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -1941,9 +1978,73 @@
 				D4EF949F15BD2D9800D803EB /* Icon-144.png */,
 				D4EF949915BD2D8B00D803EB /* Icon-57.png */,
 				D4EF949D15BD2D9600D803EB /* Icon-72.png */,
+				AEDF9BAA1ABFDE8000B14E95 /* MyFont.fnt */,
+				AEDF9BAB1ABFDE8000B14E95 /* MyFont.png */,
 			);
 			name = Resources;
 			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		AED193E41ABF9EFD00C9CD86 /* GameScene */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF9BCA1ABFE6CC00B14E95 /* GameLayer */,
+				AEDF9BC61ABFE6B100B14E95 /* MapLayer */,
+				AEDF9BC01ABFE65800B14E95 /* GameScene.cpp */,
+				AEDF9BC11ABFE65800B14E95 /* GameScene.h */,
+			);
+			path = GameScene;
+			sourceTree = "<group>";
+		};
+		AED193E51ABF9F0200C9CD86 /* MenuScene */ = {
+			isa = PBXGroup;
+			children = (
+				AED193E91ABFA00800C9CD86 /* MenuLayer.cpp */,
+				AED193EA1ABFA00800C9CD86 /* MenuLayer.h */,
+			);
+			path = MenuScene;
+			sourceTree = "<group>";
+		};
+		AED193EC1ABFA39800C9CD86 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF9BA81ABFDD4600B14E95 /* scorpion.png */,
+				AED193ED1ABFA39800C9CD86 /* img_bg_logo.jpg */,
+				AED193EE1ABFA39800C9CD86 /* LOGO.png */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		AEDF9BB51ABFE16200B14E95 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF9BCE1ABFED8600B14E95 /* bg.mp3 */,
+				AEDF9BB61ABFE16200B14E95 /* BGMusic.mp3 */,
+				AEDF9BD01ABFEFDF00B14E95 /* bg2.mp3 */,
+				AEDF9BB71ABFE16200B14E95 /* effect_boom.mp3 */,
+				AEDF9BB81ABFE16200B14E95 /* effect_bullet.mp3 */,
+				AEDF9BB91ABFE16200B14E95 /* gameMusic.mp3 */,
+				AEDF9BBA1ABFE16200B14E95 /* menuMusic.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		AEDF9BC61ABFE6B100B14E95 /* MapLayer */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF9BC71ABFE6B100B14E95 /* MapLayer.cpp */,
+				AEDF9BC81ABFE6B100B14E95 /* MapLayer.h */,
+			);
+			path = MapLayer;
+			sourceTree = "<group>";
+		};
+		AEDF9BCA1ABFE6CC00B14E95 /* GameLayer */ = {
+			isa = PBXGroup;
+			children = (
+				AEDF9BCB1ABFE6E500B14E95 /* GameLayer.cpp */,
+				AEDF9BCC1ABFE6E500B14E95 /* GameLayer.h */,
+			);
+			path = GameLayer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2015,16 +2116,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEDF9BD11ABFEFDF00B14E95 /* bg2.mp3 in Resources */,
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
+				AED193F01ABFA39800C9CD86 /* img_bg_logo.jpg in Resources */,
+				AEDF9BA91ABFDD4600B14E95 /* scorpion.png in Resources */,
 				D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */,
+				AED193F11ABFA39800C9CD86 /* LOGO.png in Resources */,
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
+				AEDF9BBD1ABFE16200B14E95 /* effect_bullet.mp3 in Resources */,
+				AEDF9BBC1ABFE16200B14E95 /* effect_boom.mp3 in Resources */,
 				D41A0AD1160F154A004552AE /* Default-568h@2x.png in Resources */,
+				AEDF9BAC1ABFDE8000B14E95 /* MyFont.fnt in Resources */,
+				AEDF9BAD1ABFDE8000B14E95 /* MyFont.png in Resources */,
+				AEDF9BCF1ABFED8600B14E95 /* bg.mp3 in Resources */,
+				AEDF9BBF1ABFE16200B14E95 /* menuMusic.mp3 in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
 				1AFAF8BC16D35E4900DB1158 /* CloseNormal.png in Resources */,
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
+				AEDF9BBB1ABFE16200B14E95 /* BGMusic.mp3 in Resources */,
+				AEDF9BBE1ABFE16200B14E95 /* gameMusic.mp3 in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2148,6 +2261,7 @@
 				15C0B557196D412F007F909D /* CCProcessBase.cpp in Sources */,
 				15A3DA321682F826002FB0C5 /* CCBFileLoader.cpp in Sources */,
 				15A3DA331682F826002FB0C5 /* CCBKeyframe.cpp in Sources */,
+				AEDF9BC91ABFE6B100B14E95 /* MapLayer.cpp in Sources */,
 				15C0B56F196D412F007F909D /* UILayout.cpp in Sources */,
 				15C0B566196D412F007F909D /* CCTransformHelp.cpp in Sources */,
 				15C0B58A196D412F007F909D /* LabelBMFontReader.cpp in Sources */,
@@ -2187,6 +2301,7 @@
 				15A3DA4A1682F826002FB0C5 /* CCControlButton.cpp in Sources */,
 				15A3DA4B1682F826002FB0C5 /* CCControlColourPicker.cpp in Sources */,
 				15A3DA4C1682F826002FB0C5 /* CCControlHuePicker.cpp in Sources */,
+				AEDF9BC21ABFE65800B14E95 /* GameScene.cpp in Sources */,
 				15C0B55E196D412F007F909D /* CCDisplayFactory.cpp in Sources */,
 				15A3DA4D1682F826002FB0C5 /* CCControlPotentiometer.cpp in Sources */,
 				15A3DA4E1682F826002FB0C5 /* CCControlSaturationBrightnessPicker.cpp in Sources */,
@@ -2218,6 +2333,7 @@
 				15C0B58F196D412F007F909D /* PageViewReader.cpp in Sources */,
 				15C0B563196D412F007F909D /* CCArmatureDefine.cpp in Sources */,
 				15C0B55D196D412F007F909D /* CCDecorativeDisplay.cpp in Sources */,
+				AED193EB1ABFA00800C9CD86 /* MenuLayer.cpp in Sources */,
 				15A3DAEB1682F8A6002FB0C5 /* CDAudioManager.m in Sources */,
 				15A3DAEC1682F8A6002FB0C5 /* CDOpenALSupport.m in Sources */,
 				15A3DAED1682F8A6002FB0C5 /* CocosDenshion.m in Sources */,
@@ -2225,10 +2341,10 @@
 				15C0B554196D412F007F909D /* CCNodeReader.cpp in Sources */,
 				15C0B551196D412F007F909D /* CCActionTimeline.cpp in Sources */,
 				15A3DAEF1682F8A6002FB0C5 /* SimpleAudioEngine_objc.m in Sources */,
+				AEDF9BCD1ABFE6E500B14E95 /* GameLayer.cpp in Sources */,
 				1A27573F1697CF2B00504026 /* CCEditBoxImplAndroid.cpp in Sources */,
 				15C0B58D196D412F007F909D /* ListViewReader.cpp in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
-				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 				15C0B57E196D412F007F909D /* UILoadingBar.cpp in Sources */,
 				1AC3624916D4A1E8000847F2 /* AppController.mm in Sources */,
 				1AC3624B16D4A1E8000847F2 /* main.m in Sources */,
@@ -2314,7 +2430,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
@@ -2324,7 +2440,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALID_ARCHS = "armv6 armv7 i386";
 			};
@@ -2362,7 +2478,7 @@
 					"\"$(SRCROOT)/../../../cocos2dx/platform/ios/Simulation\"",
 				);
 				INFOPLIST_FILE = Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(SRCROOT)/../../../cocos2dx/platform/third_party/ios/libraries\"",
 					"\"$(SRCROOT)/../../../external/libwebsockets/ios/lib\"",
@@ -2371,7 +2487,7 @@
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_PRODUCT = YES;
 			};
