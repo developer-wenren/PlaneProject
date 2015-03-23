@@ -151,25 +151,28 @@ void MenuLayer::update(float dt)
 
 void MenuLayer::callBack()
 {
+    
     this->setupBackgroundView();
     
 }
 
 void MenuLayer::callBack2()
 {
+    
     this->setupLogo();
 }
 
 void MenuLayer::callBack3()
 {
-    this->setupMenu();
     
+    this->setupMenu();
 }
 
 void MenuLayer::gotoScene()
 {
+    
     AUDIO_SYSTEM_CC->playEffect(ADUIO_EFFECT_FILE);
     
-    CCDirector::sharedDirector()->replaceScene(GameScene::createGameScene(1));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipY::create(1, GameScene::createGameScene(2), kCCTransitionOrientationDownOver));
     
 }
