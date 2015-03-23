@@ -8,7 +8,13 @@
 
 #include "GameScene.h"
 
+#include "SimpleAudioEngine.h"
+
 #include "MapLayer.h"
+
+#include "Define.h"
+
+USING_CC_AUDIO;
 
 GameScene* GameScene::createGameScene(int level)
 {
@@ -35,6 +41,8 @@ bool GameScene::initGameScene(int level)
     
     game_level = level;
 
+    AUDIO_SYSTEM_CC->playBackgroundMusic("BGMusic.mp3", true);
+    
     MapLayer *mapLayer = MapLayer::creatMaplayer(level);
     
     this->addChild(mapLayer);
