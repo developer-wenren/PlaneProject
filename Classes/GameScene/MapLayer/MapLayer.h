@@ -21,6 +21,7 @@ class MapLayer :public CCLayer
 {
 
 protected:
+    
     CCSprite *map_a;
     CCSprite *map_b;
     
@@ -34,5 +35,12 @@ public:
     
     void update(float dt);
     
+    void onEnter();
+                        //  当前节点 被加到，被移除 从父节点时 回掉该方法
+    void onExit();
+                       // start -> enter-> finish-> exit
+    void onEnterTransitionDidFinish();
     
+    void onEnterTransitionDidStart();
+
 };

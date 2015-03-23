@@ -40,8 +40,6 @@ bool GameScene::initGameScene(int level)
     bool isDone = CCScene::init()? true:false;
     
     game_level = level;
-
-    AUDIO_SYSTEM_CC->playBackgroundMusic("BGMusic.mp3", true);
     
     MapLayer *mapLayer = MapLayer::creatMaplayer(level);
     
@@ -49,4 +47,12 @@ bool GameScene::initGameScene(int level)
     
     return isDone;
     
+}
+
+void GameScene::onEnterTransitionDidFinish()
+{
+    CCScene::onEnterTransitionDidFinish();
+    
+    AUDIO_SYSTEM_CC->playBackgroundMusic("BGMusic.mp3", true);
+
 }

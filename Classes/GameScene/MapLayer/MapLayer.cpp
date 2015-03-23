@@ -31,7 +31,6 @@ bool MapLayer:: initMaplayer(int level)
     
     this->setupMapView(level);
     
-    this->scheduleUpdate();
     
     return isDone;
     
@@ -83,6 +82,31 @@ void MapLayer::update(float dt)
 
     }
 
+}
+
+void MapLayer::onEnter()
+{
+    CCLayer::onEnter();  // 优先调用父类方法
+    
+}
+
+void MapLayer::onExit()
+{
+    CCLayer::onExit();
+    
+}
+
+void MapLayer::onEnterTransitionDidStart()
+{
+    CCLayer::onExitTransitionDidStart();
+
+}
+
+void MapLayer::onEnterTransitionDidFinish()
+{
+    CCLayer::onEnterTransitionDidFinish();
+    
+    this->scheduleUpdate();
 
 
 }

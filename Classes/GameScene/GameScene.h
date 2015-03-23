@@ -29,7 +29,8 @@ public:
     
     bool initGameScene(int level);
     
-    
+    void onEnterTransitionDidFinish();
+
     
     
     
