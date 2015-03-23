@@ -19,12 +19,20 @@ USING_NS_CC;
 
 class MapLayer :public CCLayer
 {
-    
+
+protected:
+    CCSprite *map_a;
+    CCSprite *map_b;
     
 public:
     
     static MapLayer *creatMaplayer(int level);
     
     bool initMaplayer(int level);
+    
+    void setupMapView(int level);
+    
+    void update(float dt);
+    
     
 };
