@@ -7,8 +7,7 @@
 //
 
 #include "GameLayer.h"
-
-
+#include "Cloud.h"
 
 GameLayer* GameLayer::createGameLayer(int level)
 {
@@ -47,13 +46,19 @@ bool GameLayer::initGameLayer(int level)
     
 }
 
-void GameLayer::addPlane()
+void GameLayer::addPlane(int type)
 {
-    plane = Plane::creatPlane(2);
+    plane = Plane::creatPlane(type);
     
     plane->setPosition(ccp(WINSIZE.width*.5, -plane->getContentSize().height*.5));
 
-    CCSequence *sequence = CCSequence::create(CCMoveTo::create(1, WIN_CENTER),CCCallFunc::create(this, callfunc_selector(GameLayer::openTouch)));
+    CCFadeIn *fadeIn = CCFadeIn::create(1.5);
+    
+    CCRotateBy *rotate = CCRotateBy::create(1.0, 0, -720);
+    
+        CCSpawn *spawn = CCSpawn::create(rotate,CCMoveTo::create(1, WIN_PISITION(.5, .2)),fadeIn,NULL);
+
+    CCSequence *sequence = CCSequence::create(spawn,CCCallFunc::create(this, callfunc_selector(GameLayer::openTouch)),NULL);
     
     plane->runAction(sequence);
     
@@ -61,13 +66,31 @@ void GameLayer::addPlane()
     
 }
 
+void GameLayer::addCloud(float dt)
+{
+    Cloud *cloud = Cloud::create();
+    
+    this->addChild(cloud);
+    
+    float x = CCRANDOM_0_1() *WINSIZE.width;
+    
+    float y = WINSIZE.height + cloud->getContentSize().height*.5;
+    
+    cloud->setPosition(ccp(x, y));
+    
+    
+}
+
 void GameLayer::onEnterTransitionDidFinish()
 {
     CCLayer::onEnterTransitionDidFinish();
     
-    this->addPlane();
-
+    this->addPlane(PLANE_TYPE);
+    
+    this->schedule(schedule_selector(GameLayer::addCloud),2);
+    
 }
+
 
 void GameLayer::openTouch()
 {
@@ -87,7 +110,6 @@ bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
     
 //    plane->setPosition(ponit);
     
-    
     return true;
     
 }
@@ -105,16 +127,20 @@ void GameLayer:: ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     
     begin_positon = pTouch->getLocation();
     
-    CCLOG("%f,%f",plane->getPosition().x,plane->getPosition().y);
+//    CCLOG("%f,%f",plane->getPosition().x,plane->getPosition().y);
+    
+    CCLOG("%f,%f",plane->getContentSize().width,plane->getContentSize().height);
+    
     
     CCPoint plane_position = plane->getPosition();
     
+    CCLOG("%f--%f",plane_position.x,plane_position.y);
+    
+    
     if (plane_position.x>WINSIZE.width-plane->getContentSize().width*.5)
     {
+        
         plane->setPosition(ccp(WINSIZE.width-plane->getContentSize().width*.5, plane_position.y));
-        
-        
-        
     }if (plane_position.x < plane->getContentSize().width*.5)
     {
         
@@ -132,11 +158,20 @@ void GameLayer:: ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         plane->setPosition(ccp(plane_position.x,plane->getContentSize().height*.5));
     }
     
-}
-
-void GameLayer:: ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent)
-{
     
 }
 
+void GameLayer::shootBullet()
+{
+    
+    Bullet *bullet = Bullet::createBullet(1);
+    
+    bullet->setZOrder(-1);
+    
+    bullet->setPosition(plane->getPosition());
+    
+    this->addChild(bullet);
+    
+    
+}
 

@@ -16,8 +16,9 @@
 #endif /* defined(__Plane__GameScene__) */
 USING_NS_CC;
 
-class GameScene:public CCScene
+class GameScene: public CCScene
 {
+    
 private:
     
     int game_level;

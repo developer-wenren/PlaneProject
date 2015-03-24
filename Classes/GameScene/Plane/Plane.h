@@ -12,7 +12,8 @@
 #include <stdio.h>
 #include "cocos2d.h"
 
-#endif /* defined(__Plane__Plane__) */
+
+
 
 USING_NS_CC;
 
@@ -22,34 +23,26 @@ class Plane:public CCSprite
 
 public:
     
-    static Plane* creatPlane(int no);
+    static Plane* creatPlane(int type);
     
-    bool initPlane(int no);
+    bool initPlane(int type);
     
     CC_SYNTHESIZE_READONLY(int, plane_level, PlaneLevel); // 声明了一个保护变量，有set,get方法
     
-//    int getPlaneLevel()
-//    {
-//        
-//        return plane_level;
-//        
-//    }
-//    
-//    void setPlaneLevel(int level)
-//    {
-//          plane_levle;
-//    }
-    
     void upLevel(int upNum);
     
-    void shotBullet();
+    void shotBullet(float dt);
+    
+    void addFire();
+    
+    void onEnterTransitionDidFinish();
     
 protected:
     
-    int plane_no;
-    
-//    int plane_level;
+    int plane_type;
     
     
     
 };
+
+#endif /* defined(__Plane__Plane__) */

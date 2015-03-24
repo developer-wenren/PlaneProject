@@ -8,14 +8,15 @@
 
 #include "Plane.h"
 #include "Define.h"
+#include "GameLayer.h"
 
 
-Plane* Plane::creatPlane(int no)
+Plane* Plane::creatPlane(int type)
 {
     
     Plane *plane = new Plane;
     
-    if (plane && plane->initPlane(no))
+    if (plane && plane->initPlane(type))
     {
         
         plane->autorelease();
@@ -29,43 +30,16 @@ Plane* Plane::creatPlane(int no)
     return NULL;
 }
 
-bool Plane:: initPlane(int no)
+bool Plane:: initPlane(int type)
 {
     
-    CCString *plane_name = CCString::createWithFormat("role%d.png",no);
-    
-    bool isDone = CCSprite:: initWithSpriteFrameName(plane_name->getCString()) ? true:false;
+    bool isDone = CCSprite:: initWithSpriteFrameName(CCString::createWithFormat("role%d.png",type)->getCString()) ? true:false;
     
     if (isDone)
     {
-        plane_no = no;
-        
-        CCSprite *fire = CCSprite::create();
-        
-        CCAnimation *fire_animation = CCAnimation::create();
-        
-        for (int i = 0; i<4; i++)
-        {
-            const char *fire_name = CCString::createWithFormat("role_fire%d.png",i)->getCString();
-            CCSpriteFrame *fireFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(fire_name);
-            
-            fire_animation ->addSpriteFrame(fireFrame);
-            
-//            CCSpriteFrame
-        }
-        
-        fire_animation ->setDelayPerUnit(.08);
-        
-        fire_animation ->setLoops(-1);
-        
-        CCAnimate *fire_animate = CCAnimate::create(fire_animation);
-        
-        fire->runAction(fire_animate);
-        
-        this->addChild(fire);
-//        fire->seta
-        fire->setPosition(ccp(30, -30));
-        
+        plane_type = type;
+
+        this->addFire();
         
     }
     
@@ -73,13 +47,55 @@ bool Plane:: initPlane(int no)
     
 }
 
-void Plane::shotBullet()
+void Plane::addFire()
 {
+    
+    CCSprite *fire = CCSprite::create();
+    
+    CCAnimation *fire_animation = CCAnimation::create();
+    
+    for (int i = 0; i<4; i++)
+    {
+        const char *fire_name = CCString::createWithFormat("role_fire%d.png",i)->getCString();
+        
+        CCSpriteFrame *fireFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(fire_name);
+        
+        fire_animation ->addSpriteFrame(fireFrame);
+        
+        
+    }
+    
+    fire_animation ->setDelayPerUnit(.08);
+    
+    fire_animation ->setLoops(-1);
+    
+    CCAnimate *fire_animate = CCAnimate::create(fire_animation);
+    
+    fire->runAction(fire_animate);
+    
+    this->addChild(fire);
+    
+    fire->setPosition(ccp(30, -30));
+}
+
+void Plane::shotBullet(float dt)
+{
+    GameLayer *gameLayer = (GameLayer *)this->getParent();
+    
+    gameLayer->shootBullet();
     
 }
 
 void Plane::upLevel(int upNum)
 {
+    plane_level+=upNum;
     
 }
 
+void Plane::onEnterTransitionDidFinish()
+{
+    CCSprite::onEnterTransitionDidFinish();
+    
+//    this->schedule(schedule_selector(Plane::shotBullet),.1);
+
+}

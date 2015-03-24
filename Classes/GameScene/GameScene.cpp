@@ -74,7 +74,13 @@ void GameScene::onEnterTransitionDidFinish()
 
 void GameScene::loadResurces()
 {
+
+    // 设置随机算子
+    srand(time(0));
+    
     // 加载飞机文件
     CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sp_all.plist");
     
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("bullet_lv.plist");
+
 }
