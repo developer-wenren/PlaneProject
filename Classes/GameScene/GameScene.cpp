@@ -14,6 +14,8 @@
 
 #include "Define.h"
 
+#include "GameLayer.h"
+
 USING_CC_AUDIO;
 
 GameScene* GameScene::createGameScene(int level)
@@ -39,11 +41,22 @@ bool GameScene::initGameScene(int level)
 {
     bool isDone = CCScene::init()? true:false;
     
-    game_level = level;
     
-    MapLayer *mapLayer = MapLayer::creatMaplayer(level);
-    
-    this->addChild(mapLayer);
+    if (isDone)
+    {
+        this->loadResurces();
+        
+        game_level = level;
+        
+        MapLayer *mapLayer = MapLayer::creatMaplayer(level);
+        
+        this->addChild(mapLayer);
+        
+        GameLayer *gameLayer = GameLayer::createGameLayer(2);
+        
+        this->addChild(gameLayer);
+        
+    }
     
     return isDone;
     
@@ -54,5 +67,14 @@ void GameScene::onEnterTransitionDidFinish()
     CCScene::onEnterTransitionDidFinish();
     
     AUDIO_SYSTEM_CC->playBackgroundMusic("BGMusic.mp3", true);
+    
 
+}
+
+
+void GameScene::loadResurces()
+{
+    // 加载飞机文件
+    CCSpriteFrameCache::sharedSpriteFrameCache()->addSpriteFramesWithFile("sp_all.plist");
+    
 }

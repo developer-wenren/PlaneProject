@@ -22,6 +22,8 @@ private:
     
     int game_level;
     
+    void loadResurces();
+    
 public:
     
 //    CREATE_FUNC(GameScene);
@@ -31,6 +33,7 @@ public:
     
     void onEnterTransitionDidFinish();
 
+    
     
     
     

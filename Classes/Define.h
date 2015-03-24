@@ -9,6 +9,10 @@
 #ifndef Plane_Define_h
 #define Plane_Define_h
 
+#define IS_TEST  1  // 非零为测试,其他为正常运行
+
+#define PLANE_TYPE 0
+
 #define WINSIZE CCDirector::sharedDirector()->getWinSize()
 
 #define WIN_CENTER ccp(WINSIZE.width*.5, WINSIZE.height*.5)
