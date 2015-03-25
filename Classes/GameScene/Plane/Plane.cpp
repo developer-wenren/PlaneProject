@@ -41,6 +41,8 @@ bool Plane:: initPlane(int type)
 
         this->addFire();
         
+        this->schedule(schedule_selector(Plane::shotBullet),.2);
+
     }
     
     return isDone;
@@ -80,9 +82,10 @@ void Plane::addFire()
 
 void Plane::shotBullet(float dt)
 {
+   
     GameLayer *gameLayer = (GameLayer *)this->getParent();
     
-    gameLayer->shootBullet();
+    gameLayer->GameLayer::shootBullet();
     
 }
 
@@ -90,12 +93,6 @@ void Plane::upLevel(int upNum)
 {
     plane_level+=upNum;
     
-}
-
-void Plane::onEnterTransitionDidFinish()
-{
-    CCSprite::onEnterTransitionDidFinish();
     
-//    this->schedule(schedule_selector(Plane::shotBullet),.1);
-
 }
+

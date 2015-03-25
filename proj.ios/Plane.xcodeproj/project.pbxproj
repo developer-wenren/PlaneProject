@@ -247,6 +247,9 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		7855E0E1153FEF240059DD9A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7855E0DF153FEF240059DD9A /* Default.png */; };
+		AE0F1BE81AC24281003F04FA /* enemy_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AE0F1BE61AC24281003F04FA /* enemy_1.png */; };
+		AE0F1BE91AC24281003F04FA /* enemy_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AE0F1BE71AC24281003F04FA /* enemy_2.png */; };
+		AE0F1BED1AC2438C003F04FA /* Enemy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE0F1BEB1AC2438C003F04FA /* Enemy.cpp */; };
 		AE5240341AC147100065CD68 /* Cloud.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AE5240321AC147100065CD68 /* Cloud.cpp */; };
 		AED193EB1ABFA00800C9CD86 /* MenuLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AED193E91ABFA00800C9CD86 /* MenuLayer.cpp */; };
 		AED193F01ABFA39800C9CD86 /* img_bg_logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AED193ED1ABFA39800C9CD86 /* img_bg_logo.jpg */; };
@@ -812,6 +815,10 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		37C62C0718E156AE00D16FC4 /* ExtensionExport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionExport.h; sourceTree = "<group>"; };
 		7855E0DF153FEF240059DD9A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = SOURCE_ROOT; };
+		AE0F1BE61AC24281003F04FA /* enemy_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_1.png; sourceTree = "<group>"; };
+		AE0F1BE71AC24281003F04FA /* enemy_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemy_2.png; sourceTree = "<group>"; };
+		AE0F1BEB1AC2438C003F04FA /* Enemy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Enemy.cpp; sourceTree = "<group>"; };
+		AE0F1BEC1AC2438C003F04FA /* Enemy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enemy.h; sourceTree = "<group>"; };
 		AE5240321AC147100065CD68 /* Cloud.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cloud.cpp; sourceTree = "<group>"; };
 		AE5240331AC147100065CD68 /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
 		AED193E91ABFA00800C9CD86 /* MenuLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuLayer.cpp; sourceTree = "<group>"; };
@@ -2022,6 +2029,15 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
+		AE0F1BEA1AC24381003F04FA /* Enemy */ = {
+			isa = PBXGroup;
+			children = (
+				AE0F1BEB1AC2438C003F04FA /* Enemy.cpp */,
+				AE0F1BEC1AC2438C003F04FA /* Enemy.h */,
+			);
+			path = Enemy;
+			sourceTree = "<group>";
+		};
 		AE5240311AC147020065CD68 /* Cloud */ = {
 			isa = PBXGroup;
 			children = (
@@ -2034,6 +2050,7 @@
 		AED193E41ABF9EFD00C9CD86 /* GameScene */ = {
 			isa = PBXGroup;
 			children = (
+				AE0F1BEA1AC24381003F04FA /* Enemy */,
 				AE5240311AC147020065CD68 /* Cloud */,
 				AED32E5E1AC12F5B00967A74 /* Bullet */,
 				AED32E4D1AC0F10400967A74 /* Plane */,
@@ -2076,6 +2093,8 @@
 		AED32E511AC0F6E500967A74 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				AE0F1BE61AC24281003F04FA /* enemy_1.png */,
+				AE0F1BE71AC24281003F04FA /* enemy_2.png */,
 				AED32E521AC0F6E500967A74 /* bullet_lv.plist */,
 				AED32E531AC0F6E500967A74 /* bullet_lv.png */,
 				AED32E541AC0F6E500967A74 /* effect0.plist */,
@@ -2216,6 +2235,7 @@
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
 				AED193F01ABFA39800C9CD86 /* img_bg_logo.jpg in Resources */,
 				AEDF9BA91ABFDD4600B14E95 /* scorpion.png in Resources */,
+				AE0F1BE81AC24281003F04FA /* enemy_1.png in Resources */,
 				D4EF949E15BD2D9600D803EB /* Icon-72.png in Resources */,
 				AED193F11ABFA39800C9CD86 /* LOGO.png in Resources */,
 				D4EF94A015BD2D9800D803EB /* Icon-144.png in Resources */,
@@ -2244,6 +2264,7 @@
 				1AFAF8BD16D35E4900DB1158 /* CloseSelected.png in Resources */,
 				AEDF9BBB1ABFE16200B14E95 /* BGMusic.mp3 in Resources */,
 				AEDF9BBE1ABFE16200B14E95 /* gameMusic.mp3 in Resources */,
+				AE0F1BE91AC24281003F04FA /* enemy_2.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				AEDF9BDC1ABFF2D600B14E95 /* img_bg_level_2.jpg in Resources */,
 			);
@@ -2268,6 +2289,7 @@
 				15C0B596196D412F007F909D /* TriggerMng.cpp in Sources */,
 				15A3D9051682F7D5002FB0C5 /* b2DynamicTree.cpp in Sources */,
 				15A3D9061682F7D5002FB0C5 /* b2TimeOfImpact.cpp in Sources */,
+				AE0F1BED1AC2438C003F04FA /* Enemy.cpp in Sources */,
 				15A3D9071682F7D5002FB0C5 /* b2ChainShape.cpp in Sources */,
 				15A3D9081682F7D5002FB0C5 /* b2CircleShape.cpp in Sources */,
 				15A3D9091682F7D5002FB0C5 /* b2EdgeShape.cpp in Sources */,

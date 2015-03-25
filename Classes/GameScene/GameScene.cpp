@@ -68,7 +68,6 @@ void GameScene::onEnterTransitionDidFinish()
     
     AUDIO_SYSTEM_CC->playBackgroundMusic("BGMusic.mp3", true);
     
-
 }
 
 

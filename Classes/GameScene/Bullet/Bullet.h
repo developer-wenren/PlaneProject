@@ -15,14 +15,26 @@
 
 USING_NS_CC;
 
-#endif /* defined(__Plane__Bullet__) */
 
 
 class Bullet: public CCSprite
 {
+
+public:
+    
+    static Bullet *createBullet(int bulletLevel);
+    
+    bool initBullet(int bulletLevel);
+    
+    CC_SYNTHESIZE_READONLY(int, bullet_attack, Attack);
+    
+    CC_SYNTHESIZE(bool, isDie, BulletDie);
+    
+    void die();
+
 private:
     
-    int bullet_type;
+    int bullet_Level;
     
     float bullet_speed;
     
@@ -31,15 +43,9 @@ private:
     void removeBullet();
     
     
-public:
-    
-    static Bullet *createBullet(int bulletType);
-    
-    bool initBullet(int bulletType);
-    
-    CC_SYNTHESIZE_READONLY(int, bullet_attack, Attack);
-    
-    
     
     
 };
+
+
+#endif /* defined(__Plane__Bullet__) */

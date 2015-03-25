@@ -9,12 +9,14 @@
 #include "Bullet.h"
 #include "Define.h"
 
-Bullet *Bullet::createBullet(int bulletType)
+
+
+Bullet *Bullet::createBullet(int bulletLevel)
 {
     
     Bullet *bullet = new  Bullet;
     
-    if (bullet&& bullet->initBullet(bulletType))
+    if (bullet&& bullet->initBullet(bulletLevel))
     {
         
         bullet->autorelease();
@@ -29,24 +31,23 @@ Bullet *Bullet::createBullet(int bulletType)
     
 }
 
-bool Bullet::initBullet(int bulletType)
+bool Bullet::initBullet(int bulletLevel)
 {
     
-    bool isDone = CCSprite::initWithSpriteFrameName(CCString::createWithFormat("1_%d.png",bulletType)->getCString())? true:false;
-    
-    if (isDone)
+    if (! CCSprite::initWithSpriteFrameName(CCString::createWithFormat("1_%d.png",bulletLevel)->getCString()))
     {
-
-        bullet_attack = bullet_type;
-        
-        bullet_speed = 10+.1*bullet_type;
-        
-        this->schedule(schedule_selector(Bullet::move));
-        
-        
+        return false;
     }
     
-    return isDone;
+    this->setBulletDie(false);
+    
+    bullet_attack = bulletLevel;
+    
+    bullet_speed = 20+.03*bulletLevel;
+    
+    this->schedule(schedule_selector(Bullet::move));
+    
+    return true;
     
 }
 
@@ -55,8 +56,12 @@ void Bullet:: move(float dt)
 {
     this->setPositionY(this->getPositionY()+bullet_speed);
     
-    if (this->getPositionY() >= WINSIZE.height+this->getContentSize().height*.5)
+    if (this->getPositionY() >= (WINSIZE.height+ this -> getContentSize().height*.5))
     {
+        
+//        CCLog("removeBullet");
+        this->die();
+        
         this->removeBullet();
     }
     
@@ -65,5 +70,10 @@ void Bullet:: move(float dt)
 void Bullet:: removeBullet()
 {
     this->removeFromParent();
+    
+}
+
+void Bullet::die()
+{
     
 }

@@ -19,6 +19,8 @@
 
 #include "Bullet.h"
 
+#include "Enemy.h"
+
 #endif /* defined(__Plane__GameLayer__) */
 
 USING_NS_CC;
@@ -27,6 +29,8 @@ class GameLayer: public CCLayer
 {
     
 public:
+    
+    ~GameLayer();
     
     static GameLayer *createGameLayer(int level);
     
@@ -42,15 +46,26 @@ public:
     
     void addCloud(float dt);
     
+    void addEnemy(float dt);
+    
     Plane *plane;
     
 protected:
+    
+    CCArray *m_bullets;
+    
+    CCArray *m_enemys;
     
     CCPoint begin_positon;
     
     void addPlane(int type);
     
+    void bulletAndEnemyCollision();
+    
     void openTouch();
+    
+    void removeBullet();
+
 
     int aLevel;
 

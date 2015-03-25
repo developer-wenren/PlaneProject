@@ -35,7 +35,7 @@ public:
     
     void addFire();
     
-    void onEnterTransitionDidFinish();
+//    void onEnterTransitionDidFinish();
     
 protected:
     

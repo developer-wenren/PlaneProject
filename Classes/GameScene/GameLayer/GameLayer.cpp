@@ -8,6 +8,9 @@
 
 #include "GameLayer.h"
 #include "Cloud.h"
+#include "SimpleAudioEngine.h"
+
+using namespace CocosDenshion;
 
 GameLayer* GameLayer::createGameLayer(int level)
 {
@@ -36,7 +39,13 @@ bool GameLayer::initGameLayer(int level)
     
     if (isDone)
     {
-
+        m_bullets = CCArray::create(); // count -> 0
+        
+        m_bullets->retain(); // count -> 1
+        
+        m_enemys = CCArray::create();
+        
+        CC_SAFE_RETAIN(m_enemys);
         
     }
 
@@ -81,16 +90,98 @@ void GameLayer::addCloud(float dt)
     
 }
 
-void GameLayer::onEnterTransitionDidFinish()
+void GameLayer::addEnemy(float dt)
 {
-    CCLayer::onEnterTransitionDidFinish();
+//    int type = rand() % ENEMY_COUNT;
     
-    this->addPlane(PLANE_TYPE);
+    Enemy *enemy = Enemy::createEnemy(ENEMY1);
+    float x = CCRANDOM_0_1() * WINSIZE.width;
+    float y = WINSIZE.height + enemy->getContentSize().height * 0.5;
+    enemy->setPosition(ccp(x,y));
+    this->addChild(enemy);
+    //把敌人加到数组中
+    m_enemys->addObject(enemy);
+}
+
+
+void GameLayer::shootBullet()
+{
     
-    this->schedule(schedule_selector(GameLayer::addCloud),2);
+    Bullet *bullet = Bullet::createBullet(1);
+    
+    bullet->setZOrder(-1);
+    
+    bullet->setPosition(plane->getPosition());
+    
+    this->addChild(bullet);
+    
+    m_bullets->addObject(bullet);
+    
+    SimpleAudioEngine::sharedEngine()->playEffect("effect_bullet.mp3");
+
+}
+
+void GameLayer:: bulletAndEnemyCollision()
+{
+    for (int i = 0; i<m_bullets->count(); i++)
+    {
+        Bullet *bullet = (Bullet *)m_bullets->objectAtIndex(i);
+        
+        if (!bullet->getBulletDie())
+        {
+            for (int j = 0; j<m_enemys->count(); j++)
+            {
+                Enemy *enemy = (Enemy *)m_enemys->objectAtIndex(j);
+                
+                //  左下角为起始点
+                if (bullet->boundingBox().intersectsRect(enemy->boundingBox()))
+                {
+                    //remove
+                    
+                    
+                    
+                    bullet->die();
+                    
+                }
+                
+                
+            }
+        }
+        
+        
+    }
+}
+
+void GameLayer:: removeBullet()
+{
+    //  需要移除的子弹 数组
+    CCArray *removeArray = CCArray::create();
+    
+    for (int i = 0; i<m_bullets->count(); i++)
+    {
+        Bullet *dieBullet = (Bullet *)m_enemys->objectAtIndex(i);
+        
+        if (dieBullet->getBulletDie())
+        {
+            removeArray->addObject(dieBullet);
+            
+        }
+    }
+    
+    for (int j = 0;j<removeArray->count();j++)
+    {
+        Bullet *removeBullet = (Bullet *)removeArray->objectAtIndex(j);
+        
+        this->removeChild(removeBullet);
+        
+        m_bullets->removeObject(removeBullet);
+    }
+
+    removeArray->removeAllObjects();
     
 }
 
+#pragma mark -touchSetting
 
 void GameLayer::openTouch()
 {
@@ -103,12 +194,8 @@ void GameLayer::openTouch()
 
 bool GameLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
-
+    
     begin_positon = pTouch->getLocation();
-    
-//    CCLOG("%f--%f",ponit.x,ponit.y);
-    
-//    plane->setPosition(ponit);
     
     return true;
     
@@ -119,28 +206,19 @@ void GameLayer:: ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     
     CCPoint move_position = pTouch->getLocation()-begin_positon;
     
-    
-    
     plane->setPosition(plane->getPosition()+move_position);
     
 #warning 飞机的边界处理--------------------------------------
     
     begin_positon = pTouch->getLocation();
     
-//    CCLOG("%f,%f",plane->getPosition().x,plane->getPosition().y);
-    
-    CCLOG("%f,%f",plane->getContentSize().width,plane->getContentSize().height);
-    
-    
     CCPoint plane_position = plane->getPosition();
-    
-    CCLOG("%f--%f",plane_position.x,plane_position.y);
-    
     
     if (plane_position.x>WINSIZE.width-plane->getContentSize().width*.5)
     {
         
         plane->setPosition(ccp(WINSIZE.width-plane->getContentSize().width*.5, plane_position.y));
+        
     }if (plane_position.x < plane->getContentSize().width*.5)
     {
         
@@ -161,17 +239,28 @@ void GameLayer:: ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
     
 }
 
-void GameLayer::shootBullet()
+
+
+void GameLayer::onEnterTransitionDidFinish()
 {
+//    CCLayer::onEnterTransitionDidFinish();
     
-    Bullet *bullet = Bullet::createBullet(1);
+    this->addPlane(PLANE_TYPE);
     
-    bullet->setZOrder(-1);
+//    this->schedule(schedule_selector(GameLayer::addCloud),2);
     
-    bullet->setPosition(plane->getPosition());
+    this->schedule(schedule_selector(GameLayer::addEnemy),2);
     
-    this->addChild(bullet);
+    this->schedule(schedule_selector(GameLayer::bulletAndEnemyCollision));
+
+}
+
+GameLayer::~GameLayer()
+{
+    m_enemys->release();
     
+    m_bullets->release();
     
 }
+
 
