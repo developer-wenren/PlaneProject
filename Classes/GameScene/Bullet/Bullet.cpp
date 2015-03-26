@@ -11,12 +11,12 @@
 
 
 
-Bullet *Bullet::createBullet(int bulletLevel)
+Bullet *Bullet::createBullet(int bulletLevel,int bulletType)
 {
     
     Bullet *bullet = new  Bullet;
     
-    if (bullet&& bullet->initBullet(bulletLevel))
+    if (bullet&& bullet->initBullet(bulletLevel, bulletType))
     {
         
         bullet->autorelease();
@@ -31,19 +31,19 @@ Bullet *Bullet::createBullet(int bulletLevel)
     
 }
 
-bool Bullet::initBullet(int bulletLevel)
+bool Bullet::initBullet(int bulletLevel,int bulletType)
 {
     
-    if (! CCSprite::initWithSpriteFrameName(CCString::createWithFormat("1_%d.png",bulletLevel)->getCString()))
+    if (! CCSprite::initWithSpriteFrameName(CCString::createWithFormat("%d_%d.png",bulletType,bulletLevel)->getCString()))
     {
         return false;
     }
     
-    this->setBulletDie(false);
+    _isDie = false;
     
     bullet_attack = bulletLevel;
     
-    bullet_speed = 20+.03*bulletLevel;
+    bullet_speed = 10+.03*bulletLevel;
     
     this->schedule(schedule_selector(Bullet::move));
     
@@ -59,21 +59,18 @@ void Bullet:: move(float dt)
     if (this->getPositionY() >= (WINSIZE.height+ this -> getContentSize().height*.5))
     {
         
-//        CCLog("removeBullet");
+        CCLog("removeBullet");
+        
         this->die();
         
-        this->removeBullet();
     }
-    
-}
-
-void Bullet:: removeBullet()
-{
-    this->removeFromParent();
     
 }
 
 void Bullet::die()
 {
-    
+    _isDie = true;
+    this->removeFromParent();
+
+
 }

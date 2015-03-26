@@ -14,13 +14,17 @@
 
 USING_CC_AUDIO;
 
-CCScene * MenuLayer::scene()
+static int gameLevel;
+
+CCScene *MenuLayer::scene(int level)
 {
     CCScene *scene = CCScene::create();
     
-    MenuLayer *layer =MenuLayer::create();
+    MenuLayer *layer = MenuLayer::create();
     
     scene->addChild(layer);
+    
+    gameLevel = level;
     
     AUDIO_SYSTEM_CC->playBackgroundMusic("bg2.mp3");
     
@@ -40,17 +44,20 @@ void MenuLayer::setupLogo()
     
     CCFadeIn *fadeIn = CCFadeIn::create(1);
     CCScaleTo *scaleTo = CCScaleTo::create(1.5,1);
-    CCSpawn *spawn = CCSpawn::create(fadeIn,scaleTo,NULL);
 
     CCCallFunc *callFinc = CCCallFunc::create(this, callfunc_selector(MenuLayer::callBack3));
     
+    CCCallFunc *callAudio = CCCallFunc::create(this, callfunc_selector(MenuLayer::callBackAudio));
+
+    CCSpawn *spawn = CCSpawn::create(fadeIn,scaleTo,NULL);
     CCEaseBounceOut *bounceOut = CCEaseBounceOut::create(spawn);
     
-    CCSequence *sequence = CCSequence::create(bounceOut,callFinc,NULL);
+    CCSequence *sequence = CCSequence::create(callAudio,bounceOut,callFinc,NULL);
     
     logoView->runAction(sequence);
     
     this->addChild(logoView);
+    
     
 }
 
@@ -106,11 +113,6 @@ void MenuLayer::setupTeam()
     scorp->setScale(.5);
     scorp->setOpacity(0);
     
-//    CCScaleTo *scaleTo = CCScaleTo::create(1,1);
-//    CCFadeIn *fadeIn = CCFadeIn::create(1);
-//    CCSpawn *spawn = CCSpawn::create(fadeIn,scaleTo, NULL);
-//    CCCallFunc *callFunc = CCCallFunc::create(this, callfunc_selector(MenuLayer::callBack));
-//    CCDelayTime *delay = CCDelayTime::create(.5);
     
     CCSequence *sequence = CCSequence::create(CCSpawn::create(CCFadeIn::create(1),CCScaleTo::create(1,1), NULL),CCDelayTime::create(.5),CCFadeOut::create(.5),CCCallFunc::create(this, callfunc_selector(MenuLayer::callBack)),NULL);
     
@@ -168,11 +170,17 @@ void MenuLayer::callBack3()
     this->setupMenu();
 }
 
+void MenuLayer::callBackAudio()
+{
+    AUDIO_SYSTEM_CC ->playEffect("title.wav");
+    
+}
+
 void MenuLayer::gotoScene()
 {
     
     AUDIO_SYSTEM_CC->playEffect(ADUIO_EFFECT_FILE);
     
-    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipY::create(1, GameScene::createGameScene(2), kCCTransitionOrientationDownOver));
+    CCDirector::sharedDirector()->replaceScene(CCTransitionFlipY::create(1, GameScene::createGameScene(gameLevel), kCCTransitionOrientationDownOver));
     
 }

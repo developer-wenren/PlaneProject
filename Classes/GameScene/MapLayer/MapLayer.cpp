@@ -42,6 +42,8 @@ void MapLayer::setupMapView(int level)
     
     const char *imageName = CCString::createWithFormat("img_bg_level_%d.jpg",level)->getCString();
     
+    CCLog("%s",imageName);
+
     map_a = CCSprite::create(imageName);
     
     map_b = CCSprite::create(imageName);

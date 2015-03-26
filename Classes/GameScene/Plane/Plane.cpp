@@ -39,9 +39,16 @@ bool Plane:: initPlane(int type)
     {
         plane_type = type;
 
+        plane_level = 1;
+        
         this->addFire();
         
-        this->schedule(schedule_selector(Plane::shotBullet),.2);
+        CCDelayTime *delay = CCDelayTime::create(.5);
+        CCCallFunc *callBack = CCCallFunc::create(this, callfunc_selector(Plane::bulletScheduleBegin));
+        CCSequence *seq = CCSequence::create(delay,callBack,NULL);
+        
+        this->runAction(seq);
+        
 
     }
     
@@ -93,6 +100,10 @@ void Plane::upLevel(int upNum)
 {
     plane_level+=upNum;
     
-    
 }
 
+void Plane::bulletScheduleBegin()
+{
+    this->schedule(schedule_selector(Plane::shotBullet),1);
+
+}

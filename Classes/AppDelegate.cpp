@@ -31,13 +31,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
 #pragma mark --- 调试专用
     
-#if IS_TEST >=0
+#if IS_TEST !=0
     
     GameScene *pScene = GameScene::createGameScene(1);
 
 #else
 
-    CCScene *pScene = MenuLayer::scene();
+    CCScene *pScene = MenuLayer::scene(1);
 
 #endif
     

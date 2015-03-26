@@ -9,6 +9,8 @@
 #include "GameLayer.h"
 #include "Cloud.h"
 #include "SimpleAudioEngine.h"
+#include "GameScene.h"
+#include "Prop.h"
 
 using namespace CocosDenshion;
 
@@ -33,7 +35,6 @@ GameLayer* GameLayer::createGameLayer(int level)
 
 bool GameLayer::initGameLayer(int level)
 {
-
     
     bool isDone = CCLayer::init()? true:false;
     
@@ -45,13 +46,36 @@ bool GameLayer::initGameLayer(int level)
         
         m_enemys = CCArray::create();
         
+        m_props = CCArray::create();
+        
+        m_props->retain();
+        
+        aLevel = level;
+        
         CC_SAFE_RETAIN(m_enemys);
+        
+        this->setupScoreLabel();
         
     }
 
     
 
     return isDone;
+    
+}
+
+#pragma mark  添加飞机，云，敌人, 道具
+
+void GameLayer::addProp(float dt)
+{
+    Prop *prop = Prop::create();
+    
+    this->addChild(prop);
+    
+    prop->setPosition(ccp(CCRANDOM_0_1()*WINSIZE.width, WINSIZE.height+prop->getContentSize().height*.5));
+    
+    m_props->addObject(prop);
+    
     
 }
 
@@ -92,9 +116,9 @@ void GameLayer::addCloud(float dt)
 
 void GameLayer::addEnemy(float dt)
 {
-//    int type = rand() % ENEMY_COUNT;
+    int type = rand() % ENEMY_COUNT;
     
-    Enemy *enemy = Enemy::createEnemy(ENEMY1);
+    Enemy *enemy = Enemy::createEnemy((EnemyType)type);
     float x = CCRANDOM_0_1() * WINSIZE.width;
     float y = WINSIZE.height + enemy->getContentSize().height * 0.5;
     enemy->setPosition(ccp(x,y));
@@ -107,7 +131,7 @@ void GameLayer::addEnemy(float dt)
 void GameLayer::shootBullet()
 {
     
-    Bullet *bullet = Bullet::createBullet(1);
+    Bullet *bullet = Bullet::createBullet(plane->getPlaneLevel(),BULLET_TYPE);
     
     bullet->setZOrder(-1);
     
@@ -121,6 +145,10 @@ void GameLayer::shootBullet()
 
 }
 
+
+
+#pragma mark  碰撞检测 ，移除飞机，敌人
+
 void GameLayer:: bulletAndEnemyCollision()
 {
     for (int i = 0; i<m_bullets->count(); i++)
@@ -133,22 +161,51 @@ void GameLayer:: bulletAndEnemyCollision()
             {
                 Enemy *enemy = (Enemy *)m_enemys->objectAtIndex(j);
                 
-                //  左下角为起始点
-                if (bullet->boundingBox().intersectsRect(enemy->boundingBox()))
+                if (!enemy->getDie())
                 {
-                    //remove
-                    
-                    
-                    
-                    bullet->die();
+                    //  左下角为起始点
+                    if (bullet->boundingBox().intersectsRect(enemy->boundingBox()))
+                    {
+                        //remove
+                        
+                        CCLog("hit---");
+                        
+                        SimpleAudioEngine::sharedEngine()->playEffect("effect_boom.mp3");
+                        
+                        enemy->harm(bullet->getAttack());
+                        
+                        bullet->die();
+                        
+                        
+                    }
                     
                 }
                 
-                
             }
+            
         }
         
+    }
+}
+
+void GameLayer::propAndPlaneCollision()
+{
+    for (int i = 0; i<m_props->count(); i++)
+    {
+        Prop *prop = (Prop *)m_props->objectAtIndex(i);
         
+        if (!prop->getDie())
+        {
+            if (prop->boundingBox().intersectsRect(plane->boundingBox()))
+            {
+                CCLog("eat");
+                
+                prop->Die();
+                plane->upLevel(prop->getPower());
+
+            }
+            
+        }
     }
 }
 
@@ -159,7 +216,7 @@ void GameLayer:: removeBullet()
     
     for (int i = 0; i<m_bullets->count(); i++)
     {
-        Bullet *dieBullet = (Bullet *)m_enemys->objectAtIndex(i);
+        Bullet *dieBullet = (Bullet *)m_bullets->objectAtIndex(i);
         
         if (dieBullet->getBulletDie())
         {
@@ -175,10 +232,84 @@ void GameLayer:: removeBullet()
         this->removeChild(removeBullet);
         
         m_bullets->removeObject(removeBullet);
+        
     }
 
     removeArray->removeAllObjects();
     
+}
+
+void GameLayer::removeProp()
+{
+    //  需要移除的道具 数组
+    CCArray *removeArray = CCArray::create();
+    
+    /**
+     *  宏遍历写法
+     */
+//    CCObject *Obj;
+//    CCARRAY_FOREACH(removeArray, Obj);
+    
+    
+    for (int i = 0; i<m_props->count(); i++)
+    {
+        Prop *dieProp = (Prop *)m_props->objectAtIndex(i);
+        
+        if (dieProp->getDie())
+        {
+            removeArray->addObject(dieProp);
+            
+        }
+    }
+    
+    for (int j = 0;j<removeArray->count();j++)
+    {
+        Prop *removeProp = (Prop *)removeArray->objectAtIndex(j);
+        
+        this->removeChild(removeProp);
+        
+        m_props->removeObject(removeProp);
+        
+    }
+    
+    removeArray->removeAllObjects();
+    
+}
+
+void GameLayer::removeEnemy()
+{
+    //  需要移除的enemy 数组
+    CCArray *removeArray = CCArray::create();
+    
+    for (int i = 0; i<m_enemys->count(); i++)
+    {
+        Enemy *dieEnemy = (Enemy *)m_enemys->objectAtIndex(i);
+        
+        if (dieEnemy->getDie())
+        {
+            removeArray->addObject(dieEnemy);
+            
+        }
+    }
+    
+    for (int j = 0;j<removeArray->count();j++)
+    {
+        Enemy *removerEnemy = (Enemy *)removeArray->objectAtIndex(j);
+
+        
+        if (removerEnemy->getBeat())
+        {
+            this->addScore(removerEnemy->getScore());
+        }
+        
+        this->removeChild(removerEnemy);
+        
+        m_enemys->removeObject(removerEnemy);
+
+        
+    }
+    
+    removeArray->removeAllObjects();
 }
 
 #pragma mark -touchSetting
@@ -236,24 +367,167 @@ void GameLayer:: ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent)
         plane->setPosition(ccp(plane_position.x,plane->getContentSize().height*.5));
     }
     
+}
+
+#pragma mark  ScoreLabel Setting
+
+void GameLayer:: setupScoreLabel()
+{
+    _score = 0;
+    
+    _scoreFont = CCLabelBMFont::create("0", "MyFont.fnt");
+    
+    _scoreFont->setAnchorPoint(ccp(0,1));
+    
+    _scoreFont->setPosition(0, WINSIZE.height);
+    
+    this->addChild(_scoreFont);
     
 }
 
+void GameLayer:: addScore(int addNum)
+{
+    _score +=addNum;
+    
+    _scoreFont->setString(CCString::createWithFormat("%d",_score)->getCString());
+    
+    if (_score >= 100)
+    {
+        this->winGame();
+    }
+    
+}
 
+#pragma mark  游戏暂停
+
+void GameLayer::winGame()
+{
+    this->pauseGame(DIRECTOR->getRunningScene());
+    
+    this->setTouchEnabled(false);
+    
+    AUDIO_SYSTEM_CC->stopBackgroundMusic();
+    
+    this->hideSprites();
+
+}
+
+void GameLayer:: pauseGame(CCNode *node)
+{
+    
+    int count = node->getChildrenCount();
+    
+    for (int i = 0; i<count; i++)
+    {
+        CCNode *child =(CCNode *)node->getChildren()->objectAtIndex(i);
+        
+        this->pauseGame(child);
+    }
+    
+    node->unscheduleAllSelectors();
+    
+}
+
+void GameLayer:: addWinLayer()
+{
+    CCLayerColor *layer = CCLayerColor::create(ccc4(0, 0, 0, 125));
+    
+    //    CCLayerGradient
+    
+    DIRECTOR->getRunningScene()->addChild(layer);
+    
+    CCMenu *menu = CCMenu::create();
+    
+    CCMenuItemImage *image = CCMenuItemImage::create("game_win.png", NULL, this, menu_selector(GameLayer::goNextScene));
+ 
+    menu->addChild(image);
+    
+    layer->addChild(menu);
+    
+}
+
+void GameLayer::hideSprites()
+{
+    CCMoveTo *moveTo = CCMoveTo::create(1, ccp(plane->getPositionX(), WINSIZE.height+100));
+    
+    CCCallFunc *callFunc = CCCallFunc::create(this, callfunc_selector(GameLayer::addWinLayer));
+    
+    CCSequence *seq = CCSequence::create(moveTo,callFunc);
+    
+    plane->runAction(seq);
+    
+    for (int i = 0; i<m_enemys->count(); i++)
+    {
+        Enemy *enemy = (Enemy *)m_enemys->objectAtIndex(i);
+        
+        enemy->setVisible(false);
+        
+    }
+    
+    for (int i = 0; i<m_bullets->count(); i++)
+    {
+        Bullet *enemy = (Bullet *)m_bullets->objectAtIndex(i);
+        
+        enemy->setVisible(false);
+        
+    }
+    
+    for (int i = 0; i<m_props->count(); i++)
+    {
+        Prop *prop = (Prop *)m_props->objectAtIndex(i);
+        
+        prop->setVisible(false);
+        
+    }
+
+}
+
+#pragma mark 场景切换 onEnter
 
 void GameLayer::onEnterTransitionDidFinish()
 {
-//    CCLayer::onEnterTransitionDidFinish();
+    
+    //        CCLayer::onEnterTransitionDidFinish();
     
     this->addPlane(PLANE_TYPE);
-    
-//    this->schedule(schedule_selector(GameLayer::addCloud),2);
+
+    this->schedule(schedule_selector(GameLayer::addProp),5);
+
+    this->schedule(schedule_selector(GameLayer::addCloud),2);
     
     this->schedule(schedule_selector(GameLayer::addEnemy),2);
     
     this->schedule(schedule_selector(GameLayer::bulletAndEnemyCollision));
+    
+    this->schedule(schedule_selector(GameLayer::removeBullet));
+    
+    this->schedule(schedule_selector(GameLayer::removeEnemy));
+ 
+    this->schedule(schedule_selector(GameLayer::propAndPlaneCollision));
 
 }
+
+void GameLayer::goNextScene()
+{
+
+    CCLOG("%d",aLevel);
+    
+    if (aLevel<5)
+    {
+        DIRECTOR->replaceScene(CCTransitionFlipX::create(1, GameScene::createGameScene(++aLevel)));
+    }else
+    {
+
+#warning 返回主界面--------------------------------------
+                CCLOG("---------------");
+    }
+    
+
+
+    
+
+}
+
 
 GameLayer::~GameLayer()
 {
@@ -261,6 +535,9 @@ GameLayer::~GameLayer()
     
     m_bullets->release();
     
+    m_props->release();
+    
 }
+
 
 

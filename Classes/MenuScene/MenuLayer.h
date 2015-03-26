@@ -15,12 +15,14 @@
 
 USING_NS_CC;
 
+class GameScene;
+
 class MenuLayer:public CCLayerColor
 {
     
 public:
     
-   static CCScene *scene();
+   static CCScene *scene(int level);
     
     CREATE_FUNC(MenuLayer);
     
@@ -44,7 +46,10 @@ public:
     
     void callBack3();
     
+    void callBackAudio();
+    
 };
+
 
 
 #endif /* defined(__Plane__MenuLayer__) */

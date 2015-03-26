@@ -52,7 +52,7 @@ bool GameScene::initGameScene(int level)
         
         this->addChild(mapLayer);
         
-        GameLayer *gameLayer = GameLayer::createGameLayer(2);
+        GameLayer *gameLayer = GameLayer::createGameLayer(level);
         
         this->addChild(gameLayer);
         
@@ -66,7 +66,10 @@ void GameScene::onEnterTransitionDidFinish()
 {
     CCScene::onEnterTransitionDidFinish();
     
-    AUDIO_SYSTEM_CC->playBackgroundMusic("BGMusic.mp3", true);
+    const char *musicName = CCString::createWithFormat("BGMusic_%d.mp3",game_level)->getCString();
+    
+    
+    AUDIO_SYSTEM_CC->playBackgroundMusic(musicName, true);
     
 }
 

@@ -32,27 +32,35 @@ bool Enemy:: initEnemy(EnemyType type)
 
     const char* imageName = CCString::createWithFormat("enemy_%d.png", type + 1)->getCString();
     
-    if (!CCSprite::initWithFile("enemy_1"))
+    if (!CCSprite::initWithFile(imageName))
     {
     
         return false;
         
     }
     
+//    this->setDie(false);
+    _isDie = false;
+    
+    _isBeat = false;
     
     switch ((int)type)
     {
         case ENEMY1:
             m_hp = 1;
+            _score = 100;
             break;
         case ENEMY2:
-            m_hp = 2;
+            m_hp = 1;
+            _score = 200;
             break;
         case ENEMY3:
-            m_hp = 3;
+            m_hp = 1;
+            _score = 300;
             break;
         case ENEMY4:
-            m_hp = 4;
+            _score = 50;
+            m_hp = 1;
 
             break;
 
@@ -62,22 +70,25 @@ bool Enemy:: initEnemy(EnemyType type)
     
     this->schedule(schedule_selector(Enemy::move));
 
-    CCLog("enemy init");
-    
-    
     return true;
-    
-    
-    
+ 
 }
 
 void Enemy:: harm(int harmHurt)
 {
-    m_hp-=harmHurt;
+    this->stopAllActions();
+
+    CCBlink *blink = CCBlink::create(.5, 3);
+    
+    this->runAction(blink);
+
+    m_hp -= harmHurt;
     
     if (m_hp<=0)
     {
         this->dieEnemy();
+        
+        _isBeat = true;
         
     }
 }
@@ -85,9 +96,9 @@ void Enemy:: harm(int harmHurt)
 
 void Enemy:: move(float dt)
 {
-    this->setPositionX(this->getPositionY()-m_speed);
+    this->setPositionY(this->getPositionY()-m_speed);
     
-    if (this->getPositionY() <= -this->getContentSize().height*.5)
+    if (this->getPositionY()<= -this->getContentSize().height*.5)
     {
         this->dieEnemy();
     }
@@ -97,8 +108,17 @@ void Enemy:: dieEnemy()
 {
     
 #warning 爆炸
+    _isDie = true;
     
-    this->removeEnemy();
+    CCParticleSystemQuad *system = CCParticleSystemQuad::create("particle_boom.plist");
+    
+    this->getParent()->addChild(system);
+    
+    system->setPosition(this->getPosition());
+    
+    system->setAutoRemoveOnFinish(true);    //自动销毁例子对象
+    
+//    this->removeEnemy();
     
 }
 

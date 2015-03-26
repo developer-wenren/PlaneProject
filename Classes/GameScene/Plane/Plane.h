@@ -15,6 +15,7 @@
 
 
 
+
 USING_NS_CC;
 
 
@@ -41,6 +42,7 @@ protected:
     
     int plane_type;
     
+    void bulletScheduleBegin();
     
     
 };

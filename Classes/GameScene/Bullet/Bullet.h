@@ -22,14 +22,15 @@ class Bullet: public CCSprite
 
 public:
     
-    static Bullet *createBullet(int bulletLevel);
+    static Bullet *createBullet(int bulletLevel,int bulletType);
     
-    bool initBullet(int bulletLevel);
+    bool initBullet(int bulletLevel,int bulletType);
     
     CC_SYNTHESIZE_READONLY(int, bullet_attack, Attack);
     
-    CC_SYNTHESIZE(bool, isDie, BulletDie);
+    CC_SYNTHESIZE(bool, _isDie, BulletDie);
     
+//    CC_SYNTHESIZE(bool, _is, <#funName#>)
     void die();
 
 private:
@@ -41,9 +42,6 @@ private:
     void move(float dt);
     
     void removeBullet();
-    
-    
-    
     
 };
 

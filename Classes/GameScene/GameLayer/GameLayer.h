@@ -56,7 +56,16 @@ protected:
     
     CCArray *m_enemys;
     
+    CCArray *m_props;
+    
     CCPoint begin_positon;
+    
+    int aLevel;
+    
+    int _score;
+    
+    CCLabelBMFont *_scoreFont;
+    
     
     void addPlane(int type);
     
@@ -65,8 +74,27 @@ protected:
     void openTouch();
     
     void removeBullet();
-
-
-    int aLevel;
-
+    
+    void removeEnemy();
+    
+    void removeProp();
+    
+    void addScore(int addNum);
+  
+    void setupScoreLabel();
+    
+    void winGame();
+    
+    void pauseGame(CCNode *);
+    
+    void addWinLayer();
+    
+    void hideSprites();
+    
+    void goNextScene();
+    
+    void addProp(float dt);
+    
+    void propAndPlaneCollision();
+    
 };

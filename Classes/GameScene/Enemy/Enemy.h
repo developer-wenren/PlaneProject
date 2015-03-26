@@ -46,5 +46,11 @@ public:
     
     void harm(int harmHurt);
     
+    CC_SYNTHESIZE(bool, _isDie, Die);
+    
+    CC_SYNTHESIZE(int, _score, Score);
+    
+    CC_SYNTHESIZE(bool, _isBeat, Beat);
+    
     
 };
