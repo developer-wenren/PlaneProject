@@ -71,7 +71,6 @@ void Plane::addFire()
         
         fire_animation ->addSpriteFrame(fireFrame);
         
-        
     }
     
     fire_animation ->setDelayPerUnit(.08);
@@ -98,12 +97,20 @@ void Plane::shotBullet(float dt)
 
 void Plane::upLevel(int upNum)
 {
+    
     plane_level+=upNum;
+    
+    plane_level = plane_level>35? 35:plane_level;
     
 }
 
 void Plane::bulletScheduleBegin()
 {
-    this->schedule(schedule_selector(Plane::shotBullet),1);
+    this->schedule(schedule_selector(Plane::shotBullet),.6);
+}
 
+CCRect Plane::planeBoundingBox()
+{
+    return CCRect(this->getPositionX(), this->getPositionY(),24,10);
+    
 }

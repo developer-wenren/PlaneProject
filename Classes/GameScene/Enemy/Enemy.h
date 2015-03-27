@@ -30,6 +30,8 @@ class Enemy:public CCSprite
 {
     int m_hp;
     
+    float max_hp;
+    
     float m_speed;
     
     void move(float dt);
@@ -37,6 +39,10 @@ class Enemy:public CCSprite
     void removeEnemy();
     
     void dieEnemy();
+    
+    void setupBloodBar();
+    
+    CCProgressTimer *progress;
     
 public:
 

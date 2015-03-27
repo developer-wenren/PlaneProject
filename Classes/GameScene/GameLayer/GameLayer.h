@@ -85,11 +85,18 @@ protected:
     
     void winGame();
     
+    void loseGame();
+    
     void pauseGame(CCNode *);
     
     void addWinLayer();
     
+    void addWinLayer2();
+    
     void hideSprites();
+    
+    void hideSprites2();
+
     
     void goNextScene();
     
@@ -97,4 +104,5 @@ protected:
     
     void propAndPlaneCollision();
     
+    void planeAndEnemyCollision();
 };

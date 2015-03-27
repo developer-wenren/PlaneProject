@@ -36,6 +36,7 @@ public:
     
     void addFire();
     
+    CCRect planeBoundingBox();
 //    void onEnterTransitionDidFinish();
     
 protected:

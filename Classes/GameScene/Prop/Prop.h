@@ -28,6 +28,8 @@ public:
     void move();
     
     void Die();
+    
+    void willDie();
 
     CC_SYNTHESIZE(int, _addPower, Power);
     

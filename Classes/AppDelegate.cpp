@@ -33,11 +33,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     
 #if IS_TEST !=0
     
-    GameScene *pScene = GameScene::createGameScene(1);
+    GameScene *pScene = GameScene::createGameScene(GAME_LEVEL);
 
 #else
 
-    CCScene *pScene = MenuLayer::scene(1);
+    CCScene *pScene = MenuLayer::scene(GAME_LEVEL);
 
 #endif
     

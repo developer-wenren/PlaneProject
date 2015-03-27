@@ -66,3 +66,24 @@ void Prop::Die()
     this->removeFromParent();
     
 }
+
+void Prop::willDie()
+{
+    this->setEat(true);
+    
+    this->unschedule(schedule_selector(Prop::move));
+    
+    CCScaleTo *scale = CCScaleTo::create(.5, .5);
+    
+    CCFadeOut *fadeOut = CCFadeOut::create(.5);
+    
+    CCSpawn *spawn = CCSpawn::create(scale,fadeOut,NULL);
+    
+    CCSequence *seq = CCSequence::create(spawn,CCCallFunc::create(this, callfunc_selector(Prop::Die)),NULL);
+    
+    this->runAction(seq);
+    
+    
+    
+
+}

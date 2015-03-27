@@ -285,6 +285,9 @@
 		AEDF9BDF1ABFF2D600B14E95 /* img_bg_level_5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BD81ABFF2D600B14E95 /* img_bg_level_5.jpg */; };
 		AEDF9BE01ABFF2D600B14E95 /* img_cloud_1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BD91ABFF2D600B14E95 /* img_cloud_1.png */; };
 		AEDF9BE11ABFF2D600B14E95 /* img_cloud_2.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDF9BDA1ABFF2D600B14E95 /* img_cloud_2.png */; };
+		AEE1B2DA1AC4ED51006A8C5C /* progress2.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE1B2D81AC4ED51006A8C5C /* progress2.png */; };
+		AEE1B2DB1AC4ED51006A8C5C /* progress1.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE1B2D91AC4ED51006A8C5C /* progress1.png */; };
+		AEE1B2DD1AC4F9CE006A8C5C /* game_lost.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE1B2DC1AC4F9CE006A8C5C /* game_lost.png */; };
 		AEF878D41AC3D020001399E2 /* title.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEF878D31AC3D020001399E2 /* title.wav */; };
 		AEF878D61AC3DD9F001399E2 /* game_win.png in Resources */ = {isa = PBXBuildFile; fileRef = AEF878D51AC3DD9F001399E2 /* game_win.png */; };
 		AEF878DC1AC3DED1001399E2 /* BGMusic_1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEF878D71AC3DED1001399E2 /* BGMusic_1.mp3 */; };
@@ -874,6 +877,9 @@
 		AEDF9BD81ABFF2D600B14E95 /* img_bg_level_5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_bg_level_5.jpg; sourceTree = "<group>"; };
 		AEDF9BD91ABFF2D600B14E95 /* img_cloud_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_cloud_1.png; sourceTree = "<group>"; };
 		AEDF9BDA1ABFF2D600B14E95 /* img_cloud_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_cloud_2.png; sourceTree = "<group>"; };
+		AEE1B2D81AC4ED51006A8C5C /* progress2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress2.png; sourceTree = "<group>"; };
+		AEE1B2D91AC4ED51006A8C5C /* progress1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progress1.png; sourceTree = "<group>"; };
+		AEE1B2DC1AC4F9CE006A8C5C /* game_lost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_lost.png; sourceTree = "<group>"; };
 		AEF878D31AC3D020001399E2 /* title.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = title.wav; sourceTree = "<group>"; };
 		AEF878D51AC3DD9F001399E2 /* game_win.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = game_win.png; sourceTree = "<group>"; };
 		AEF878D71AC3DED1001399E2 /* BGMusic_1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BGMusic_1.mp3; sourceTree = "<group>"; };
@@ -2121,7 +2127,10 @@
 		AED32E511AC0F6E500967A74 /* Game */ = {
 			isa = PBXGroup;
 			children = (
+				AEE1B2D81AC4ED51006A8C5C /* progress2.png */,
+				AEE1B2D91AC4ED51006A8C5C /* progress1.png */,
 				AEF878E11AC3E5C9001399E2 /* prop.png */,
+				AEE1B2DC1AC4F9CE006A8C5C /* game_lost.png */,
 				AEF878D51AC3DD9F001399E2 /* game_win.png */,
 				AE407DAF1AC391F3001E12E3 /* enemy_3.png */,
 				AE407DB01AC391F3001E12E3 /* enemy_4.png */,
@@ -2280,6 +2289,7 @@
 				7855E0E1153FEF240059DD9A /* Default.png in Resources */,
 				D4EF949A15BD2D8B00D803EB /* Icon-57.png in Resources */,
 				D4EF949C15BD2D8E00D803EB /* Icon-114.png in Resources */,
+				AEE1B2DA1AC4ED51006A8C5C /* progress2.png in Resources */,
 				AED193F01ABFA39800C9CD86 /* img_bg_logo.jpg in Resources */,
 				AE407DB21AC391F3001E12E3 /* enemy_3.png in Resources */,
 				AEDF9BA91ABFDD4600B14E95 /* scorpion.png in Resources */,
@@ -2314,6 +2324,7 @@
 				AEDF9BBF1ABFE16200B14E95 /* menuMusic.mp3 in Resources */,
 				AE407DB61AC398E0001E12E3 /* particle_boom.plist in Resources */,
 				D446FD6E16102124000ADA7B /* Default@2x.png in Resources */,
+				AEE1B2DB1AC4ED51006A8C5C /* progress1.png in Resources */,
 				AED32E581AC0F6E500967A74 /* bullet_lv.plist in Resources */,
 				AEDF9BE01ABFF2D600B14E95 /* img_cloud_1.png in Resources */,
 				15A3D9961682F7F9002FB0C5 /* CMakeLists.txt in Resources */,
@@ -2324,6 +2335,7 @@
 				AE0F1BE91AC24281003F04FA /* enemy_2.png in Resources */,
 				1AFAF8BE16D35E4900DB1158 /* HelloWorld.png in Resources */,
 				AEDF9BDC1ABFF2D600B14E95 /* img_bg_level_2.jpg in Resources */,
+				AEE1B2DD1AC4F9CE006A8C5C /* game_lost.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

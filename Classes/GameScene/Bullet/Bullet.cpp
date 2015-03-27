@@ -45,6 +45,7 @@ bool Bullet::initBullet(int bulletLevel,int bulletType)
     
     bullet_speed = 10+.03*bulletLevel;
     
+    
     this->schedule(schedule_selector(Bullet::move));
     
     return true;
@@ -58,7 +59,7 @@ void Bullet:: move(float dt)
     
     if (this->getPositionY() >= (WINSIZE.height+ this -> getContentSize().height*.5))
     {
-        
+
         CCLog("removeBullet");
         
         this->die();
@@ -70,7 +71,14 @@ void Bullet:: move(float dt)
 void Bullet::die()
 {
     _isDie = true;
+    
     this->removeFromParent();
 
+
+}
+
+CCRect Bullet::bulletBoundingBox()
+{
+    return CCRect(this->getPositionX()-10, this->getPositionY()-10, 20, 20);
 
 }

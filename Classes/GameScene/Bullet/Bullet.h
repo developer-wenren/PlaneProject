@@ -30,9 +30,12 @@ public:
     
     CC_SYNTHESIZE(bool, _isDie, BulletDie);
     
-//    CC_SYNTHESIZE(bool, _is, <#funName#>)
+//    CC_SYNTHESIZE(bool, _is, funName)
+    
     void die();
-
+    
+    CCRect bulletBoundingBox();
+    
 private:
     
     int bullet_Level;
@@ -42,6 +45,8 @@ private:
     void move(float dt);
     
     void removeBullet();
+    
+    
     
 };
 

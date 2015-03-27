@@ -28,11 +28,23 @@ typedef enum {
 
 }BulletType;
 
+typedef enum {
+    
+    gameLevel1 = 1,
+    
+    gameLevel2 = 2,
+    
+    gameLevel3 = 3,
+    
+}GameLevel;
+
 #define IS_TEST  1 // 非零为测试,零为正常运行
 
 #define PLANE_TYPE Red_Plane        // 飞机样式
 
 #define BULLET_TYPE bulletType3    //  子弹样式
+
+#define GAME_LEVEL gameLevel1
 
 #define WINSIZE CCDirector::sharedDirector()->getWinSize()
 
