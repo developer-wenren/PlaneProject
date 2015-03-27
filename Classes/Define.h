@@ -38,17 +38,19 @@ typedef enum {
     
 }GameLevel;
 
-#define IS_TEST  1 // 非零为测试,零为正常运行
+#define IS_TEST  0 // 非零为测试,零为正常运行
 
-#define PLANE_TYPE Red_Plane        // 飞机样式
+#define PLANE_TYPE Black_Plane        // 飞机样式
 
-#define BULLET_TYPE bulletType3    //  子弹样式
+#define BULLET_TYPE bulletType2    //  子弹样式
 
 #define GAME_LEVEL gameLevel1
 
 #define WINSIZE CCDirector::sharedDirector()->getWinSize()
 
 #define WIN_CENTER ccp(WINSIZE.width*.5, WINSIZE.height*.5)
+
+#define SCORE_GOAL 2000
 
 #define WIN_PISITION(_X,_Y) ccp(WINSIZE.width*(_X), WINSIZE.height*(_Y))
 

@@ -123,6 +123,15 @@ void GameLayer::addEnemy(float dt)
     Enemy *enemy = Enemy::createEnemy((EnemyType)type);
     float x = CCRANDOM_0_1() * WINSIZE.width;
     float y = WINSIZE.height + enemy->getContentSize().height * 0.5;
+    if (x<= enemy->getContentSize().width*.5)
+    {
+        x = enemy->getContentSize().width*5;
+    }
+    
+    if (x>=WINSIZE.width-enemy->getContentSize().width*.5)
+    {
+        x= WINSIZE.width-enemy->getContentSize().width*.5;
+    }
     enemy->setPosition(ccp(x,y));
     this->addChild(enemy);
     //把敌人加到数组中
@@ -153,7 +162,7 @@ void GameLayer::shootBullet()
 
 void GameLayer:: planeAndEnemyCollision()
 {
-    CCLog("plane x-%f,y-%f",plane->getPositionX(),plane->getPositionY());
+//    CCLog("plane x-%f,y-%f",plane->getPositionX(),plane->getPositionY());
     
     for (int i = 0; i<m_enemys->count(); i++)
     {
@@ -420,7 +429,7 @@ void GameLayer:: addScore(int addNum)
     
     _scoreFont->setString(CCString::createWithFormat("%d",_score)->getCString());
     
-    if (_score >= 500)
+    if (_score >= SCORE_GOAL)
     {
         this->winGame();
     }
@@ -485,7 +494,7 @@ void GameLayer:: addWinLayer2()
     
     CCMenu *menu = CCMenu::create();
     
-//    aLevel = 6;
+    aLevel = 6;
     CCMenuItemImage *image = CCMenuItemImage::create("game_lost.png", NULL, this, menu_selector(GameLayer::goNextScene));
     
     menu->addChild(image);
@@ -598,7 +607,7 @@ void GameLayer::onEnterTransitionDidFinish()
 
     this->schedule(schedule_selector(GameLayer::addCloud),2);
     
-    this->schedule(schedule_selector(GameLayer::addEnemy),2);
+    this->schedule(schedule_selector(GameLayer::addEnemy),1);
     
     this->schedule(schedule_selector(GameLayer::bulletAndEnemyCollision));
     
@@ -631,9 +640,6 @@ void GameLayer::goNextScene()
         
         
     }
-    
-
-
     
 
 }

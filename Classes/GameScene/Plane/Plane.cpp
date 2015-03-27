@@ -111,6 +111,6 @@ void Plane::bulletScheduleBegin()
 
 CCRect Plane::planeBoundingBox()
 {
-    return CCRect(this->getPositionX(), this->getPositionY(),24,10);
+    return CCRect(this->getPositionX(), this->getPositionY()-4,24,20);
     
 }

@@ -83,7 +83,4 @@ void Prop::willDie()
     
     this->runAction(seq);
     
-    
-    
-
 }
